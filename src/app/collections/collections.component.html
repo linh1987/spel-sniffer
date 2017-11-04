@@ -1,0 +1,19 @@
+<div>
+  <h1 class="sample-content">Spel Sniffer</h1>
+
+  <hr>
+
+  <div>
+    <h4>Your Collections</h4>
+
+    <div *ngFor="let game of products | async" class="search-result">
+      <a href="{{game.url}}">
+        {{game.name}}
+        <br /> </a>
+      {{game.price}}
+      <br />
+      <img src="{{game.image}}" />
+    </div>
+  </div>
+  <br style="clear: both" />
+</div>
