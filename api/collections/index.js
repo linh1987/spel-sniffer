@@ -9,26 +9,22 @@ const adapter = new FileSync('db.json')
 const db = low(adapter)
 
 db.defaults({
-        games: []
-    })
-    .write()
+    games: [],
+    queries: []
+})
+.write()
 
 
 router.get('/', (req, res) => {
-    const games = db.get('games')
+    const games = db.get('queries')
         .value();
 
     res.send(games);
 });
 
 router.post('/', (req, res) => {
-    db.get('games')
-        .push({
-            url: req.body.url,
-            name: req.body.name,
-            image: req.body.image,
-            price: req.body.price
-        })
+    db.get('queries')
+        .push(req.body)
         .write();
 
     res.sendStatus(200);

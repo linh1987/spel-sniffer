@@ -5,6 +5,7 @@ import {
 
 import { CollectionsService } from '../services/collections.service';
 import { Game } from '../models/game';
+import { Query } from '../models/query';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -19,7 +20,7 @@ export class CollectionsComponent implements OnInit {
   /**
    * Set our default values
    */
-  public products: Observable<Game[]> = Observable.of<Game[]>([]);
+  public queries: Observable<Query[]> = Observable.of<Query[]>([]);
   public searchTerm = { value: '' };
 
   /**
@@ -31,8 +32,7 @@ export class CollectionsComponent implements OnInit {
 
   public ngOnInit() {
     this.collectionsService.get().then((foundProducts) => {
-      console.log(foundProducts)
-      this.products = Observable.of(foundProducts);
+      this.queries = Observable.of(foundProducts);
     })
   }
 

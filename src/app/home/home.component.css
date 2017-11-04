@@ -3,3 +3,10 @@
     float: left;
     width: 25%;
 }
+
+.site-result {
+    width: 100%;
+    clear: both;
+    margin-bottom: 20px;
+    float: left;
+}

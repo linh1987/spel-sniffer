@@ -5,14 +5,21 @@
 
   <div>
     <h4>Your Collections</h4>
-
-    <div *ngFor="let game of products | async" class="search-result">
-      <a href="{{game.url}}">
-        {{game.name}}
-        <br /> </a>
-      {{game.price}}
-      <br />
-      <img src="{{game.image}}" />
+    <div *ngFor="let query of queries | async" class="site-result">
+      <div *ngFor="let site of query.sites" class="site-result">
+        <h1>{{site.name}}</h1>
+        <div *ngFor="let game of site.games" class="search-result">
+          <a href="{{game.url}}" target="_blank">
+            {{game.name}}
+            <br /> </a>
+          {{game.price}}
+          <br />
+          <img src="{{game.image}}" />
+          <label>In stock:
+            <span>{{game.available}}</span>
+          </label>
+        </div>
+      </div>
     </div>
   </div>
   <br style="clear: both" />

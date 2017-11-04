@@ -13,16 +13,20 @@
 
       <button>Search</button>
     </form>
-
-    <div *ngFor="let game of products | async" class="search-result">
-      <a href="{{game.url}}">
-        {{game.name}}
-        <br /> </a>
-      {{game.price}}
-      <br />
-      <img src="{{game.image}}" />
-      <button (click)="add(game)" value="Add">Add</button>
+    <button (click)="track(sites.value)" *ngIf="trackable" >Track</button>
+    <div *ngFor="let site of sites | async" class="site-result">
+      <h1>{{site.name}}</h1>
+      <div *ngFor="let game of site.games" class="search-result">
+        <a href="{{game.url}}" target="_blank">
+          {{game.name}}
+          <br /> </a>
+        {{game.price}}
+        <br />
+        <img src="{{game.image}}" />
+        <label>In stock: <span>{{game.available}}</span></label>
+      </div>
     </div>
-  </div>
+    
   <br style="clear: both" />
+  </div>
 </div>

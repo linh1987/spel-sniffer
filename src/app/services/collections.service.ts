@@ -8,7 +8,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/toPromise';
 import cheerio from 'cheerio';
 
-import { Game } from '../models/game';
+import { Query } from '../models/query';
 
 const apiUrlTemplate = 'http://localhost:3001/collections/';
 
@@ -16,14 +16,14 @@ const apiUrlTemplate = 'http://localhost:3001/collections/';
 export class CollectionsService {
     constructor(private http: Http) { }
 
-    get() : Promise<Game[]> {
+    get() : Promise<Query[]> {
         return this.http
         .get(apiUrlTemplate)
         .map((r: Response) => r.text()).toPromise().then((responseText) => JSON.parse(responseText));
     }
 
-    add(game: Game) : Promise<boolean> {
-        return this.http.post(apiUrlTemplate, game)
+    add(query: Query) : Promise<boolean> {
+        return this.http.post(apiUrlTemplate, query)
                 .map((r: Response) => r.status === 200 ? true: false).toPromise();
     }
 }

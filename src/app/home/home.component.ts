@@ -9,6 +9,7 @@ import { XLargeDirective } from './x-large';
 import { SearchService } from '../services/search.service';
 import { CollectionsService } from '../services/collections.service';
 import cheerio from 'cheerio';
+import { Site } from '../models/site';
 import { Game } from '../models/game';
 import { Observable } from 'rxjs/Observable';
 
@@ -40,8 +41,9 @@ export class HomeComponent implements OnInit {
   /**
    * Set our default values
    */
-  public products: Observable<Game[]> = Observable.of<Game[]>([]);
+  public sites: Observable<Site[]> = Observable.of<Site[]>([]);
   public searchTerm = { value: '' };
+  public trackable: boolean = false;
 
   /**
    * TypeScript public modifiers
@@ -57,12 +59,13 @@ export class HomeComponent implements OnInit {
   }
 
   public search(value: string) {
-    this.searchService.search(value).then((foundProducts) => {
-      this.products = Observable.of(foundProducts);
+    this.searchService.search(value).then((sites) => {
+      this.sites = Observable.of(sites);
+      this.trackable = sites.some(s => s.games.length > 0);
     });
   }
-  public add(game: Game) {
-      console.log(game);
-      this.collectionsService.add(game);
+
+  public track(sites: Site[]) {
+      this.collectionsService.add({ keyword: this.searchTerm.value, sites });
   }
 }

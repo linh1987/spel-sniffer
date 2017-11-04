@@ -3,4 +3,5 @@ export class Game {
     name: string;
     image: string;
     price: string;
+    available: boolean;
 }

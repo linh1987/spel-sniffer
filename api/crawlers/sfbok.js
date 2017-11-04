@@ -1,20 +1,19 @@
 const cheerio = require('cheerio');
 const request = require('request');
 
-const searchUrlTemplate = 'https://www.alphaspel.se/search/?query=';
-const domainPrefix = 'https://www.alphaspel.se';
+const domainPrefix = 'https://www.sfbok.se';
 
 
 const parseHtmlToProducts = (response) => {
     const $ = cheerio.load(response);
-    const foundProducts = $('.product').map((_, el) => {
+    const foundProducts = $('.view-product-search .views-row').map((_, el) => {
         const $el = $(el);
         const game = {
-            url: domainPrefix + $el.find('a').first().attr('href'),
-            name: $el.find('.product-name').text().trim(),
-            image: domainPrefix + $el.find('img').first().attr('src'),
-            price: $el.find('.price').first().text().trim(),
-            available: $el.find('.add-to-cart').text().indexOf('Köp') > -1
+            url: domainPrefix + $el.find('.field-image a').first().attr('href'),
+            name: $el.find('.content h2').first().text().trim(),
+            image: $el.find('.field-image img').first().attr('src'),
+            price: $el.find('.cart a').first().text().trim(),
+            available: $el.find('.cart a').text().indexOf('kr') > -1
         }
 
         return game;
@@ -23,11 +22,11 @@ const parseHtmlToProducts = (response) => {
     return foundProducts;
 }
 
-
 const search = (term) => {
     const concenatedTerm = term.replace(' ', '+');
 
-    const searchUrl = searchUrlTemplate + concenatedTerm;
+    const searchUrl = `https://www.sfbok.se/search?keys=${concenatedTerm}`;
+
     return new Promise((resolve, reject) => {
         request(searchUrl, function (error, response, body) {
             if (error) {
@@ -36,7 +35,7 @@ const search = (term) => {
 
             if (response.statusCode >= 200 && response.statusCode < 300) {
                 resolve({
-                    name: 'alphaspel',
+                    name: 'Sfbok',
                     url: '',
                     games: parseHtmlToProducts(body)
                 });

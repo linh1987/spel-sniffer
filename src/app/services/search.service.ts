@@ -8,7 +8,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/toPromise';
 import cheerio from 'cheerio';
 
-import { Game } from '../models/game';
+import { Site } from '../models/site';
 
 const apiUrlTemplate = 'http://localhost:3001/crawl/?keyword=';
 
@@ -16,7 +16,7 @@ const apiUrlTemplate = 'http://localhost:3001/crawl/?keyword=';
 export class SearchService {
     constructor(private http: Http) { }
 
-    search(term: string): Promise<Game[]> {
+    search(term: string): Promise<Site[]> {
         const concenatedTerm = term.replace(' ', '+');
 
         return this.http
