@@ -15,4 +15,12 @@ router.get('/', (req, res) => {
     .then((values) => res.send(JSON.stringify(values)));
 });
 
+router.get('/nyheter', (req, res) => {
+  const keyword = req.query.keyword;
+  Promise.all([alphaspel.fetchNewArrivals(),
+      dragonlair.fetchNewArrivals(),
+      sfbok.fetchNewArrivals()
+    ])
+    .then((values) => res.send(JSON.stringify(values)));
+});
 module.exports = router;

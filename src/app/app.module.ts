@@ -28,6 +28,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { CollectionsComponent } from './collections';
+import { NyheterComponent } from './nyheter';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 
@@ -55,6 +56,7 @@ type StoreType = {
     AppComponent,
     HomeComponent,
     CollectionsComponent,
+    NyheterComponent,
     NoContentComponent,
     XLargeDirective
   ],

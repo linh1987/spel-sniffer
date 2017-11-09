@@ -1,19 +1,10 @@
 <div>
-  <h1 x-large class="sample-content">Spel Sniffer</h1>
+  <h1 class="sample-content">Spel Sniffer</h1>
 
   <hr>
 
   <div>
-    <h4>Search for Spel</h4>
-
-    <form (ngSubmit)="search(searchTerm.value)" autocomplete="off">
-
-      <input [value]="searchTerm.value" (input)="searchTerm.value = $event.target.value" placeholder="Enter spel name to search"
-        autofocus>
-
-      <button>Search</button>
-    </form>
-    <button (click)="track(sites.value)" *ngIf="trackable">Track</button>
+    <h4>Nyheter</h4>
     <div *ngFor="let site of sites | async" class="site-result">
       <h1>{{site.name}}</h1>
       <div *ngFor="let game of site.games" class="search-result">
@@ -33,10 +24,10 @@
             <span>{{game.available}}</span>
           </label>
 
+
         </a>
       </div>
     </div>
-
-    <br style="clear: both" />
   </div>
+  <br style="clear: both" />
 </div>

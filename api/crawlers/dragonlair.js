@@ -12,7 +12,7 @@ const parseHtmlToProducts = (response) => {
         const game = {
             url: domainPrefix + $el.find('a').first().attr('href'),
             name: $el.find('.label').text().trim(),
-            image: domainPrefix + $el.find('img').first().attr('src'),
+            image: domainPrefix + $el.find('img:not(.banner)').first().attr('src'),
             price: $el.find('.price').first().text().trim(),
             available: $el.find('.controls').text().indexOf('Ja') > -1
         }
@@ -23,14 +23,9 @@ const parseHtmlToProducts = (response) => {
     return foundProducts;
 }
 
-
-const search = (term) => {
-    const concenatedTerm = term.replace(' ', '+');
-
-    const searchUrl = `https://www.dragonslair.se/product/name:${concenatedTerm}/boardgame`;
-
+const fetchByUrl = url => {
     return new Promise((resolve, reject) => {
-        request(searchUrl, function (error, response, body) {
+        request(url, function (error, response, body) {
             if (error) {
                 reject(error);
             }
@@ -48,6 +43,21 @@ const search = (term) => {
     });
 }
 
+const search = (term) => {
+    const concenatedTerm = term.replace(' ', '+');
+
+    const searchUrl = `https://www.dragonslair.se/product/name:${concenatedTerm}/boardgame`;
+
+    return fetchByUrl(searchUrl);
+}
+
+const newArrivalsUrlTemplate = 'https://www.dragonslair.se/product/sort:new-arrivals/boardgame';
+
+const fetchNewArrivals = () => {
+    return fetchByUrl(newArrivalsUrlTemplate);
+}
+
 module.exports = {
-    search
+    search,
+    fetchNewArrivals
 }

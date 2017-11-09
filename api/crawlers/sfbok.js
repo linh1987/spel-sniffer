@@ -6,7 +6,7 @@ const domainPrefix = 'https://www.sfbok.se';
 
 const parseHtmlToProducts = (response) => {
     const $ = cheerio.load(response);
-    const foundProducts = $('.view-product-search .views-row').map((_, el) => {
+    const foundProducts = $('#block-system-main .view-content .views-row').map((_, el) => {
         const $el = $(el);
         const game = {
             url: domainPrefix + $el.find('.field-image a').first().attr('href'),
@@ -22,13 +22,9 @@ const parseHtmlToProducts = (response) => {
     return foundProducts;
 }
 
-const search = (term) => {
-    const concenatedTerm = term.replace(' ', '+');
-
-    const searchUrl = `https://www.sfbok.se/search?keys=${concenatedTerm}`;
-
+const fetchByUrl = url => {
     return new Promise((resolve, reject) => {
-        request(searchUrl, function (error, response, body) {
+        request(url, function (error, response, body) {
             if (error) {
                 reject(error);
             }
@@ -46,6 +42,21 @@ const search = (term) => {
     });
 }
 
+const search = (term) => {
+    const concenatedTerm = term.replace(' ', '+');
+
+    const searchUrl = `https://www.sfbok.se/search?keys=${concenatedTerm}`;
+
+    return fetchByUrl(searchUrl);
+}
+
+const newArrivalsUrlTemplate = 'https://www.sfbok.se/nyheter-kommande/manadens-nyheter/spel/brad-figurspel?sort=4';
+
+const fetchNewArrivals = () => {
+    return fetchByUrl(newArrivalsUrlTemplate);
+}
+
 module.exports = {
-    search
+    search,
+    fetchNewArrivals
 }

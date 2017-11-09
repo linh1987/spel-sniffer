@@ -32,6 +32,10 @@ import { AppState } from './app.service';
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         My Collections
       </a>
+      <a [routerLink]=" ['./nyheter'] "
+        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        New Arrival
+      </a>
     </nav>
 
     <main>

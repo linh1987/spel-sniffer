@@ -1,8 +1,76 @@
 html, body{
   height: 100%;
-  font-family: Arial, Helvetica, sans-serif
+  font-family: Arial, Helvetica, sans-serif;
+  color: #171b23
 }
 
 a.active {
   background-color: gray;
+}
+a {
+  color: #171b23;
+}
+* {
+  box-sizing: border-box;
+}
+
+.symbol {
+	font-size: 0.9em;
+	font-family: Times New Roman;
+	border-radius: 1em;
+	padding: .1em .6em .1em .6em;
+	font-weight: bolder;
+	color: white;
+	background-color: #4E5A56;
+}
+
+.icon-info { background-color: #3229CF; }
+.icon-error { background: #e64943; font-family: Consolas; }
+.icon-tick { background: #13c823; }
+.icon-excl { background: #ffd54b; color: black; }
+
+.icon-info:before { content: 'i'; }
+.icon-error:before { content: 'x'; }
+.icon-tick:before { content: '\002713'; }
+.icon-excl:before { content: '!'; }
+
+/*styles for home content only*/
+.search-result {
+  float: left;
+  width: 45%;
+  margin: 10px;
+  background: #eeeced;
+  border: solid 3px #eeeced;
+  border-radius: 15px;
+  height: 200px;
+
+}
+.search-result a {
+  text-decoration: none;
+  padding: 10px;
+  max-height: 100%;
+  display: block;
+}
+
+.search-result img {
+  float: left;
+  width: 45%;
+  margin-right: 2%;
+  max-height: 100%;
+}
+
+.search-result a {
+  text-decoration: none;
+  width: 100%;
+  float: left;
+}
+
+.site-result {
+  width: 33%;
+  margin-bottom: 20px;
+  float: left;
+}
+
+.game-name {
+
 }

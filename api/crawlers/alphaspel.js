@@ -23,13 +23,9 @@ const parseHtmlToProducts = (response) => {
     return foundProducts;
 }
 
-
-const search = (term) => {
-    const concenatedTerm = term.replace(' ', '+');
-
-    const searchUrl = searchUrlTemplate + concenatedTerm;
+const fetchByUrl = url => {
     return new Promise((resolve, reject) => {
-        request(searchUrl, function (error, response, body) {
+        request(url, function (error, response, body) {
             if (error) {
                 reject(error);
             }
@@ -47,6 +43,22 @@ const search = (term) => {
     });
 }
 
+
+const search = (term) => {
+    const concenatedTerm = term.replace(' ', '+');
+
+    const searchUrl = searchUrlTemplate + concenatedTerm;
+
+    return fetchByUrl(searchUrl);
+}
+
+const newArrivalsUrlTemplate = 'https://alphaspel.se/491-bradspel/news/';
+
+const fetchNewArrivals = () => {
+    return fetchByUrl(newArrivalsUrlTemplate);
+}
+
 module.exports = {
-    search
+    search,
+    fetchNewArrivals
 }
