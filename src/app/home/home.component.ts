@@ -8,7 +8,6 @@ import { Title } from './title';
 import { XLargeDirective } from './x-large';
 import { SearchService } from '../services/search.service';
 import { CollectionsService } from '../services/collections.service';
-import cheerio from 'cheerio';
 import { Site } from '../models/site';
 import { Game } from '../models/game';
 import { Observable } from 'rxjs/Observable';
@@ -66,6 +65,6 @@ export class HomeComponent implements OnInit {
   }
 
   public track(sites: Site[]) {
-      this.collectionsService.add({ keyword: this.searchTerm.value, sites });
+    this.collectionsService.add({ keyword: this.searchTerm.value, sites });
   }
 }

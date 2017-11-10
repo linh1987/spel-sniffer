@@ -8,24 +8,7 @@
     <div *ngFor="let query of queries | async">
       <div *ngFor="let site of query.sites" class="site-result">
         <h1>{{site.name}}</h1>
-        <div *ngFor="let game of site.games" class="search-result">
-          <a href="{{game.url}}" target="_blank">
-            <img src="{{game.image}}" />
-            <br />
-
-            <span class="game-name">{{game.name}}</span>
-            <br />
-            <br />
-            <span class="game-name">Price: {{game.price}}</span>
-            <br />
-            <br />
-            <label class="stock">In stock:
-              <i class="symbol icon-{{game.available ? 'tick' : 'error'}}"></i>
-              <span>{{game.available}}</span>
-            </label>
-            <br />
-          </a>
-        </div>
+        <game *ngFor="let game of site.games" [game]="game"></game>
       </div>
     </div>
     <br style="clear: both" />

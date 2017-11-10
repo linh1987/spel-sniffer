@@ -31,6 +31,7 @@ import { CollectionsComponent } from './collections';
 import { NyheterComponent } from './nyheter';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
+import { GameComponent } from './game'
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -58,7 +59,8 @@ type StoreType = {
     CollectionsComponent,
     NyheterComponent,
     NoContentComponent,
-    XLargeDirective
+    XLargeDirective,
+    GameComponent
   ],
   /**
    * Import Angular's modules.
