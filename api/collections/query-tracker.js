@@ -1,37 +1,31 @@
 const express = require('express');
 const request = require('request');
-const router = express.Router();
 //should have an abstraction layer here but w/e
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 
-const adapter = new FileSync('db.json')
+const adapter = new FileSync('queries.json')
 const db = low(adapter)
 
 db.defaults({
-    games: [],
-    queries: []
-})
-.write()
+        queries: []
+    })
+    .write()
 
+module.exports = function setup(router) {
+    router.get('/query', (req, res) => {
+        const games = db.get('queries')
+            .value();
 
-router.get('/', (req, res) => {
-    const games = db.get('queries')
-        .value();
+        res.send(games);
+    });
 
-    res.send(games);
-});
+    router.post('/query', (req, res) => {
+        db.get('queries')
+            .push(req.body)
+            .write();
 
-router.post('/', (req, res) => {
-    db.get('queries')
-        .push(req.body)
-        .write();
+        res.sendStatus(200);
+    });
 
-    res.sendStatus(200);
-});
-
-request.delete('/:id', (req, res) => {
-
-})
-
-module.exports = router;
+};
