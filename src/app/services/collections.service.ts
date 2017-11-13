@@ -10,7 +10,7 @@ import cheerio from 'cheerio';
 
 import { Query } from '../models/query';
 
-const apiUrlTemplate = 'http://localhost:3001/collections/query';
+const apiUrlTemplate = '/collections/query';
 
 @Injectable()
 export class CollectionsService {

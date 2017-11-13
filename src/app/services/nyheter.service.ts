@@ -10,7 +10,7 @@ import cheerio from 'cheerio';
 
 import { Site } from '../models/site';
 
-const apiUrlTemplate = 'http://localhost:3001/crawl/nyheter/';
+const apiUrlTemplate = '/crawl/nyheter/';
 
 @Injectable()
 export class NyheterService {

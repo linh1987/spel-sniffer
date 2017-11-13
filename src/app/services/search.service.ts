@@ -10,7 +10,7 @@ import cheerio from 'cheerio';
 
 import { Site } from '../models/site';
 
-const apiUrlTemplate = 'http://localhost:3001/crawl/?keyword=';
+const apiUrlTemplate = '/crawl/?keyword=';
 
 @Injectable()
 export class SearchService {
