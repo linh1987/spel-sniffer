@@ -1,6 +1,6 @@
 /* eslint consistent-return:0 */
 const express = require('express');
-const logger = require('./logger');
+//const logger = require('./logger');
 const port = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
 const isDev = process.env.NODE_ENV !== 'production';
@@ -31,5 +31,5 @@ app.listen(port, host, (err) => {
         return logger.error(err.message);
     }
 
-    logger.appStarted(port, "localhost");
+   // logger.appStarted(port, "localhost");
 });
