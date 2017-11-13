@@ -52,7 +52,7 @@
     "rimraf": "rimraf",
     "server:dev:hmr": "npm run server:dev -- --hotOnly",
     "server:dev": "npm run webpack-dev-server -- --config config/webpack.dev.js --open --progress --profile --watch --content-base src/",
-    "server:prod": "http-server dist -c-1 --cors",
+    "server:prod": "http-server dist -p $PORT -c-1 --cors",
     "server:prod:ci": "http-server dist -p 3000 -c-1 --cors",
     "server": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr",
@@ -99,7 +99,7 @@
     "rxjs": "^5.4.3",
     "zone.js": "~0.8.18",
     "rimraf": "~2.6.1",
-    "cheerio": "^1.0.0-rc.2",
+    "cheerio": "^1.0.0-rc.2"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~4.4.4",
