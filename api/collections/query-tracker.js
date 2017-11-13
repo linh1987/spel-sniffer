@@ -27,5 +27,9 @@ module.exports = function setup(router) {
 
         res.sendStatus(200);
     });
+    
+    // route.update('/query', (req, res) => {
+
+    // });
 
 };

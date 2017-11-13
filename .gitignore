@@ -73,3 +73,7 @@ dll/
 *.css.shim.ts
 *.ngsummary.json
 *.shim.ngstyle.ts
+
+# DB
+games.json
+db.json

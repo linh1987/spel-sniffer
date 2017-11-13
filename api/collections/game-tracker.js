@@ -28,4 +28,11 @@ module.exports = function setup(router) {
         res.sendStatus(200);
     });
 
+    // //triggering game price update
+    // router.update('/game', (req, res) => {
+    //     const games = db.get('games')
+    //         .value();
+
+    //     res.sendState(200)
+    // });
 };
