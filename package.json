@@ -58,7 +58,6 @@
     "start:hmr": "npm run server:dev:hmr",
     "start:dev": "npm run server:dev",
     "start": "concurrent \"node api\" \"npm run server:prod\"",
-    "postinstall": "npm run build:prod",
     "test": "karma start",
     "tslint": "tslint",
     "typedoc": "typedoc",
