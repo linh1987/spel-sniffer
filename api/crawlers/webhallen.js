@@ -25,7 +25,7 @@ const fetchByUrl = url => {
     return new Promise((resolve, reject) => {
         request(url, function (error, response, body) {
             if (error) {
-                reject(error);
+                console.log(error);
             }
 
             if (response.statusCode >= 200 && response.statusCode < 300) {
@@ -36,7 +36,12 @@ const fetchByUrl = url => {
                 });
             }
 
-            reject('Unknown error');
+            console.log('Unknown error: ' + response.statusCode);
+            resolve({
+                name: 'Webhallen',
+                url: '',
+                games: []
+            });
         });
     });
 }
