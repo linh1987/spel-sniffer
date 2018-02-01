@@ -73,9 +73,10 @@ a {
   float: left;
 }
 
-.game-name {
-
+.site-result game:nth-child(n+6) {
+  display: none;
 }
+
 
 
 @media (min-width: 600px) {
@@ -83,6 +84,10 @@ a {
     width: 50%;
     margin-bottom: 20px;
     float: left;
+  }
+
+  .site-result game:nth-child(n+6) {
+    display: block;
   }
 }
 
