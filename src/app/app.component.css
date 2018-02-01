@@ -68,11 +68,28 @@ a {
 }
 
 .site-result {
-  width: 25%;
+  width: 100%;
   margin-bottom: 20px;
   float: left;
 }
 
 .game-name {
 
+}
+
+
+@media (min-width: 600px) {
+  .site-result {
+    width: 50%;
+    margin-bottom: 20px;
+    float: left;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-result {
+    width: 25%;
+    margin-bottom: 20px;
+    float: left;
+  }
 }
