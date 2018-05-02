@@ -27,16 +27,18 @@ const fetchByUrl = url => {
             if (error) {
                 console.log(error);
             }
+            if (response) {
+                if (response.statusCode >= 200 && response.statusCode < 300) {
+                    resolve({
+                        name: 'Webhallen',
+                        url: '',
+                        games: parseResponseToProducts(body)
+                    });
+                }
 
-            if (response.statusCode >= 200 && response.statusCode < 300) {
-                resolve({
-                    name: 'Webhallen',
-                    url: '',
-                    games: parseResponseToProducts(body)
-                });
+                console.log('Unknown error: ' + response.statusCode);
             }
 
-            console.log('Unknown error: ' + response.statusCode);
             resolve({
                 name: 'Webhallen',
                 url: '',

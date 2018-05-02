@@ -30,15 +30,18 @@ const fetchByUrl = url => {
                 console.log(error);
             }
 
-            if (response.statusCode >= 200 && response.statusCode < 300) {
-                resolve({
-                    name: 'alphaspel',
-                    url: '',
-                    games: parseHtmlToProducts(body)
-                });
+            if (response) {
+                if (response.statusCode >= 200 && response.statusCode < 300) {
+                    resolve({
+                        name: 'alphaspel',
+                        url: '',
+                        games: parseHtmlToProducts(body)
+                    });
+                }
+                
+                console.log('Unknown error: ' + response.statusCode);
             }
 
-            console.log('Unknown error: ' + response.statusCode);
             resolve({
                 name: 'alphaspel',
                 url: '',

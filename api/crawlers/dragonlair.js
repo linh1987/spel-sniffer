@@ -29,7 +29,7 @@ const fetchByUrl = url => {
             if (error) {
                 console.log(error);
             }
-
+            if (response) {
             if (response.statusCode >= 200 && response.statusCode < 300) {
                 resolve({
                     name: 'Dragon\'s Lair',
@@ -37,8 +37,10 @@ const fetchByUrl = url => {
                     games: parseHtmlToProducts(body)
                 });
             }
-
             console.log('Unknown error: ' + response.statusCode);
+        }
+
+            
             resolve({
                 name: 'Dragon\'s Lair',
                 url: '',
