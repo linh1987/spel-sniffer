@@ -25,6 +25,7 @@ setup(app, {
 const host = null; // Let http.Server use its default IPv6/4 host
 //const prettyHost = customHost || 'localhost';
 
+console.log('listerning on port: ' + port)
 // Start your app.
 app.listen(port, host, (err) => {
     if (err) {
