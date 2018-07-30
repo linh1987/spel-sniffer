@@ -13,7 +13,7 @@
 
       <button>Search</button>
     </form>
-    <button (click)="track(sites.value)" *ngIf="trackable">Track</button>
+    <!-- <button (click)="track(sites.value)" *ngIf="trackable">Track</button> -->
     <div *ngFor="let site of sites | async" class="site-result">
       <h1>{{site.name}}</h1>
       <game *ngFor="let game of site.games" [game]="game"></game>

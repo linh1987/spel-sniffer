@@ -1,19 +1,18 @@
 const cheerio = require('cheerio');
 const request = require('request');
 
-const domainPrefix = 'https://www.sfbok.se';
-
+const domainPrefix = 'https://www.worldofboardgames.com';
 
 const parseHtmlToProducts = (response) => {
     const $ = cheerio.load(response);
-    const foundProducts = $('#block-system-main .view-content .views-row').map((_, el) => {
+    const foundProducts = $('.product').map((_, el) => {
         const $el = $(el);
         const game = {
-            url: domainPrefix + $el.find('.field-image a').first().attr('href'),
-            name: $el.find('.content h2').first().text().trim(),
-            image: $el.find('.field-image img').first().attr('src'),
-            price: $el.find('.cart a').first().text().trim(),
-            available: $el.find('.cart a').text().indexOf('kr') > -1
+            url: $el.find('a').first().attr('href'),
+            name: $el.find('div.medium a').text().trim(),
+            image: $el.find('img').first().attr('src'),
+            price: $el.find('strong').first().text().trim(),
+            available: $el.find('a.button').first().attr('href').indexOf('additem') > -1
         }
 
         return game;
@@ -31,17 +30,18 @@ const fetchByUrl = url => {
             if (response) {
                 if (response.statusCode >= 200 && response.statusCode < 300) {
                     resolve({
-                        name: 'Sfbok',
+                        name: 'WorldOfBoardgames',
                         url: '',
                         games: parseHtmlToProducts(body)
                     });
                     return;
                 }
-                
-                console.log('Sfbok Unknown error: ' + response.statusCode);
+
+                console.log('WorldOfBoardgames Unknown error: ' + response.statusCode);
             }
+
             resolve({
-                name: 'Sfbok',
+                name: 'WorldOfBoardgames',
                 url: '',
                 games: []
             });
@@ -50,14 +50,14 @@ const fetchByUrl = url => {
 }
 
 const search = (term) => {
-    const concenatedTerm = term.replace(' ', '+');
+    const concenatedTerm = term.replace(' ', '%20');
 
-    const searchUrl = `https://www.sfbok.se/search?keys=${concenatedTerm}`;
+    const searchUrl = `https://www.worldofboardgames.com/webshop-sok.php?searchString=${concenatedTerm}&search=S%F6k`;
 
     return fetchByUrl(searchUrl);
 }
 
-const newArrivalsUrlTemplate = 'https://www.sfbok.se/nyheter-kommande/manadens-nyheter/spel/brad-figurspel?sort=4';
+const newArrivalsUrlTemplate = 'https://www.worldofboardgames.com/sallskapsspel/nya_produkter';
 
 const fetchNewArrivals = () => {
     return fetchByUrl(newArrivalsUrlTemplate);

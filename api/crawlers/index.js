@@ -3,6 +3,7 @@ const request = require('request');
 const alphaspel = require('./alphaspel');
 const dragonlair = require('./dragonlair');
 const webhallen = require('./webhallen');
+const worldofboardgames = require('./worldofboardgames');
 const sfbok = require('./sfbok');
 const router = express.Router();
 
@@ -12,7 +13,8 @@ router.get('/', (req, res) => {
   Promise.all([alphaspel.search(keyword),
       dragonlair.search(keyword),
       sfbok.search(keyword),
-      webhallen.search(keyword)
+      webhallen.search(keyword),
+      worldofboardgames.search(keyword),
     ])
     .then((values) => res.send(JSON.stringify(values)));
 });
@@ -22,7 +24,8 @@ router.get('/nyheter', (req, res) => {
   Promise.all([alphaspel.fetchNewArrivals(),
       dragonlair.fetchNewArrivals(),
       sfbok.fetchNewArrivals(),
-      webhallen.fetchNewArrivals()
+      webhallen.fetchNewArrivals(),
+      worldofboardgames.fetchNewArrivals(),
     ])
     .then((values) => res.send(JSON.stringify(values)));
 });

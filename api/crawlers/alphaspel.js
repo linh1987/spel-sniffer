@@ -37,9 +37,10 @@ const fetchByUrl = url => {
                         url: '',
                         games: parseHtmlToProducts(body)
                     });
+                    return;
                 }
                 
-                console.log('Unknown error: ' + response.statusCode);
+                console.log('alphaspel Unknown error: ' + response.statusCode);
             }
 
             resolve({
