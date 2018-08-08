@@ -8,6 +8,7 @@ import { Title } from './title';
 import { XLargeDirective } from './x-large';
 import { SearchService } from '../services/search.service';
 import { CollectionsService } from '../services/collections.service';
+import { PriceTrackingService } from '../services/pricetracking.service';
 import { Site } from '../models/site';
 import { Game } from '../models/game';
 import { Observable } from 'rxjs/Observable';
@@ -25,7 +26,8 @@ import { Observable } from 'rxjs/Observable';
   providers: [
     Title,
     SearchService,
-    CollectionsService
+    CollectionsService,
+    PriceTrackingService
   ],
   /**
    * Our list of styles in our component. We may add more to compose many styles together.
@@ -51,7 +53,8 @@ export class HomeComponent implements OnInit {
     public appState: AppState,
     public title: Title,
     public searchService: SearchService,
-    public collectionsService: CollectionsService
+    public collectionsService: CollectionsService,
+    public priceTrackingService: PriceTrackingService
   ) { }
 
   public ngOnInit() {
@@ -59,7 +62,7 @@ export class HomeComponent implements OnInit {
 
   public search(value: string) {
     this.searchService.search(value).then((sites) => {
-      this.sites = Observable.of(sites);
+      this.sites = Observable.of(this.priceTrackingService.track(sites));
       this.trackable = sites.some(s => s.games.length > 0);
     });
   }

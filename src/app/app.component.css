@@ -77,6 +77,10 @@ a {
   display: none;
 }
 
+.game-hasdiscount {
+  text-decoration: line-through;
+}
+
 
 
 @media (min-width: 600px) {
