@@ -3,8 +3,8 @@ export class Game {
   name: string;
   image: string;
   price: string;
-  lastKnownPrice: number;
   lowestPrice: number;
+  hightestPrice: number;
   available: boolean;
 
   public getPrice(): number {
@@ -12,6 +12,6 @@ export class Game {
   }
 
   public get hasDiscount() : boolean {
-      return this.getPrice() < this.lowestPrice || this.getPrice() < this.lastKnownPrice;
+      return this.getPrice() < this.hightestPrice;
   }
 }
