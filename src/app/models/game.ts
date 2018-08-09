@@ -4,7 +4,7 @@ export class Game {
   image: string;
   price: string;
   lowestPrice: number;
-  hightestPrice: number;
+  highestPrice: number;
   available: boolean;
 
   public getPrice(): number {
@@ -12,6 +12,6 @@ export class Game {
   }
 
   public get hasDiscount() : boolean {
-      return this.getPrice() < this.hightestPrice;
+      return this.getPrice() < this.highestPrice;
   }
 }

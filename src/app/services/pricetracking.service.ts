@@ -24,10 +24,10 @@ export class PriceTrackingService {
 
     let storedGame: Game = JSON.parse(storedData);
 
-    if (!storedGame.hightestPrice) {
-      storedGame.hightestPrice = this.getPrice(game);
-    } else if (storedGame.hightestPrice < this.getPrice(game)) {
-      storedGame.hightestPrice = this.getPrice(game);
+    if (!storedGame.highestPrice) {
+      storedGame.highestPrice = this.getPrice(game);
+    } else if (storedGame.highestPrice < this.getPrice(game)) {
+      storedGame.highestPrice = this.getPrice(game);
     }
 
     if (
