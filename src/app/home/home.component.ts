@@ -55,7 +55,9 @@ export class HomeComponent implements OnInit {
   public ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       let searchString = params["s"];
+      
       if (searchString) {
+        this.searchTerm.value = searchString;
         this.searchService.search(searchString).then(sites => {
           this.sites = Observable.of(this.priceTrackingService.track(sites));
           this.trackable = sites.some(s => s.games.length > 0);
