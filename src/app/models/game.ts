@@ -5,13 +5,6 @@ export class Game {
   price: string;
   lowestPrice: number;
   highestPrice: number;
+  currentPrice: number;
   available: boolean;
-
-  public getPrice(): number {
-    return Number(this.price.split(" ")[0]);
-  }
-
-  public get hasDiscount() : boolean {
-      return this.getPrice() < this.highestPrice;
-  }
 }

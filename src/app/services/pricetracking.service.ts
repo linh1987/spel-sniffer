@@ -24,22 +24,14 @@ export class PriceTrackingService {
 
     let storedGame: Game = JSON.parse(storedData);
 
-    if (!storedGame.highestPrice) {
-      storedGame.highestPrice = this.getPrice(game);
-    } else if (storedGame.highestPrice < this.getPrice(game)) {
-      storedGame.highestPrice = this.getPrice(game);
-    }
+    game.currentPrice = this.getPrice(game);
 
-    if (
-      !storedGame.lowestPrice ||
-      storedGame.lowestPrice > this.getPrice(game)
-    ) {
-      storedGame.lowestPrice = this.getPrice(game);
-    }
+    game.highestPrice = storedGame.highestPrice > game.currentPrice ? storedGame.highestPrice : game.currentPrice;
+    game.lowestPrice = storedGame.lowestPrice < game.currentPrice ?  storedGame.lowestPrice : game.currentPrice;
+    
+    localStorage.setItem(game.url, JSON.stringify(game));
 
-    localStorage.setItem(game.url, JSON.stringify(storedGame));
-
-    return storedGame;
+    return game;
   }
 
   track(sites: Site[]): Site[] {

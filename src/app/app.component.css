@@ -82,6 +82,11 @@ a {
 }
 
 
+.game-highlight {
+  color: red;
+}
+
+
 
 @media (min-width: 600px) {
   .site-result {
