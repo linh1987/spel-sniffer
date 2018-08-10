@@ -17,13 +17,15 @@ export class CollectionsService {
     constructor(private http: Http) { }
 
     get() : Promise<Query[]> {
-        return this.http
-        .get(apiUrlTemplate)
-        .map((r: Response) => r.text()).toPromise().then((responseText) => JSON.parse(responseText));
+        return null;
+        // return this.http
+        // .get(apiUrlTemplate)
+        // .map((r: Response) => r.text()).toPromise().then((responseText) => JSON.parse(responseText));
     }
 
     add(query: Query) : Promise<boolean> {
-        return this.http.post(apiUrlTemplate, query)
-                .map((r: Response) => r.status === 200 ? true: false).toPromise();
+        return null;
+        // return this.http.post(apiUrlTemplate, query)
+        //         .map((r: Response) => r.status === 200 ? true: false).toPromise();
     }
 }

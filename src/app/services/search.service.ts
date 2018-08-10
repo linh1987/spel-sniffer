@@ -10,7 +10,7 @@ import cheerio from 'cheerio';
 
 import { Site } from '../models/site';
 
-const apiUrlTemplate = '/crawl/?keyword=';
+const apiUrlTemplate = '/.netlify/functions/search?keyword=';
 
 @Injectable()
 export class SearchService {

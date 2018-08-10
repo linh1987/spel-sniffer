@@ -10,7 +10,7 @@ import cheerio from 'cheerio';
 
 import { Site } from '../models/site';
 
-const apiUrlTemplate = '/crawl/nyheter/';
+const apiUrlTemplate = '/.netlify/functions/nyheter/';
 
 @Injectable()
 export class NyheterService {

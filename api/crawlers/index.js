@@ -1,32 +1,15 @@
-const express = require('express');
-const request = require('request');
-const alphaspel = require('./alphaspel');
-const dragonlair = require('./dragonlair');
-const webhallen = require('./webhallen');
-const worldofboardgames = require('./worldofboardgames');
-const sfbok = require('./sfbok');
+const express = require("express");
+const request = require("request");
 const router = express.Router();
+const engine = require("./engine");
 
-
-router.get('/', (req, res) => {
+router.get("/search", (req, res) => {
   const keyword = req.query.keyword;
-  Promise.all([alphaspel.search(keyword),
-      dragonlair.search(keyword),
-      sfbok.search(keyword),
-      webhallen.search(keyword),
-      worldofboardgames.search(keyword),
-    ])
-    .then((values) => res.send(JSON.stringify(values)));
+  engine.search(keyword).then(values => res.send(JSON.stringify(values)));
 });
 
-router.get('/nyheter', (req, res) => {
-  const keyword = req.query.keyword;
-  Promise.all([alphaspel.fetchNewArrivals(),
-      dragonlair.fetchNewArrivals(),
-      sfbok.fetchNewArrivals(),
-      webhallen.fetchNewArrivals(),
-      worldofboardgames.fetchNewArrivals(),
-    ])
-    .then((values) => res.send(JSON.stringify(values)));
+router.get("/nyheter", (req, res) => {
+  engine.nyheter().then(values => res.send(JSON.stringify(values)));
 });
+
 module.exports = router;

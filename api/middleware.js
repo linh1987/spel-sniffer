@@ -14,8 +14,8 @@ module.exports = function (app) {
     //     request(queryUrl).pipe(res);
     // })
 
-    app.use('/crawl', crawl);
-    app.use('/collections', collections)
+    app.use('/.netlify/functions', crawl);
+    //app.use('/collections', collections)
 
     // app.listen(port, function () {
     //     console.log(`Request forwarder is listening on port ${port}!`)

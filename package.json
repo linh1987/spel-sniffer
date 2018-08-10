@@ -72,7 +72,9 @@
     "webdriver:start": "npm run webdriver-manager start",
     "webdriver:update": "webdriver-manager update",
     "webpack-dev-server": "node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js"
+    "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js",
+    "functions": "netlify-lambda serve lambda",
+    "functions:build": "netlify-lambda build lambda"
   },
   "dependencies": {
     "@angular/animations": "~4.4.4",
@@ -141,6 +143,7 @@
     "karma-remap-coverage": "^0.1.4",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.4",
+    "netlify-lambda": "^0.4.0",
     "ng-router-loader": "^2.1.0",
     "ngc-webpack": "^3.2.0",
     "node-sass": "^4.5.2",
