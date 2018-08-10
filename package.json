@@ -58,7 +58,7 @@
     "server": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr",
     "start:dev": "npm run server:dev",
-    "start": "npm run build:prod && npm run start:prod",
+    "start": "node server",
     "test": "karma start",
     "tslint": "tslint",
     "typedoc": "typedoc",
