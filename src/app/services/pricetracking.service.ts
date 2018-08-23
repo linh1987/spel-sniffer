@@ -27,7 +27,7 @@ export class PriceTrackingService {
     game.currentPrice = this.getPrice(game);
 
     game.highestPrice = storedGame.highestPrice > game.currentPrice ? storedGame.highestPrice : game.currentPrice;
-    game.lowestPrice = storedGame.lowestPrice < game.currentPrice ?  storedGame.lowestPrice : game.currentPrice;
+    game.lowestPrice = storedGame.lowestPrice < game.currentPrice && storedGame.lowestPrice > 0 ?  storedGame.lowestPrice : game.currentPrice;
     
     localStorage.setItem(game.url, JSON.stringify(game));
 
