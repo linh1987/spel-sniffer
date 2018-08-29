@@ -7,13 +7,13 @@
     <span class="game-name">{{game.name}}</span>
     <br />
     <br />
-    <span class="game-name {{game.currentPrice < game.highestPrice ? 'game-highlight' : ''}}">Price: {{game.currentPrice}} kr</span>
+    <span class="game-name {{game.currentPrice < game.highestPrice && game.available ? 'game-highlight' : ''}}">Price: {{game.currentPrice}} kr</span>
     <br />
     <br />
     <span class="game-name">Lowest Price: {{game.lowestPrice}} kr</span>
     <br />
     <br />
-    <span class="game-name {{game.currentPrice < game.highestPrice ? 'game-hasdiscount' : ''}}">Highest Price: {{game.highestPrice}} kr</span>
+    <span class="game-name {{game.currentPrice < game.highestPrice && game.available ? 'game-hasdiscount' : ''}}">Highest Price: {{game.highestPrice}} kr</span>
     <br />
     <br />
     <label class="stock">In stock:
