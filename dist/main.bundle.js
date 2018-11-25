@@ -62,7 +62,7 @@ var ac_main =
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ca8fe1a499570ef229dd"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "daa375c32e421ce6d273"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -82402,7 +82402,7 @@ exports.push([module.i, "", ""]);
 /* 249 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"search-result\">\n  <a href=\"{{game.url}}\" target=\"_blank\">\n    <img src=\"{{game.image}}\" />\n    <br />\n\n\n    <span class=\"game-name\">{{game.name}}</span>\n    <br />\n    <br />\n    <div *ngIf=\"1 == 2; else singlePriceTemplate\">\n      <span class=\"game-name\">Lowest Price: {{game.lowestPrice}} kr</span>\n      <br />\n      <br />\n      <span class=\"game-name {{game.currentPrice < game.highestPrice ? 'game-hasdiscount' : ''}}\">Highest Price: {{game.highestPrice}} kr</span>\n    </div>\n    <ng-template #singlePriceTemplate>\n      <span class=\"game-name {{game.currentPrice < game.highestPrice ? 'game-hasdiscount' : ''}}\">Price: {{game.highestPrice}} kr</span>\n    </ng-template>\n    \n    <br />\n    <br />\n    <label class=\"stock\">In stock:\n      <i class=\"symbol icon-{{game.available ? 'tick' : 'error'}}\"></i>\n    </label>\n  </a>\n</div>"
+module.exports = "<div class=\"search-result\">\n  <a href=\"{{game.url}}\" target=\"_blank\">\n    <b class=\"game-name\">{{game.name}}</b>\n    <br />\n    <br />\n\n    <section class=\"search-result-inner\">\n      <img src=\"{{game.image}}\" />\n\n      <div *ngIf=\"game.highestPrice > game.lowestPrice; else singlePriceTemplate\">\n        <span class=\"game-name\">Lowest Price: {{game.lowestPrice}} kr</span>\n        <br />\n        <br />\n        <span class=\"game-name {{game.currentPrice < game.highestPrice ? 'game-hasdiscount' : ''}}\">Highest Price: {{game.highestPrice}} kr</span>\n      </div>\n      <ng-template #singlePriceTemplate>\n        <span class=\"game-name {{game.currentPrice < game.highestPrice ? 'game-hasdiscount' : ''}}\">Price: {{game.highestPrice}} kr</span>\n      </ng-template>\n      \n      <br />\n      <br />\n      <label class=\"stock\">In stock:\n        <i class=\"symbol icon-{{game.available ? 'tick' : 'error'}}\"></i>\n      </label>\n    </section>\n  </a>\n</div>"
 
 /***/ }),
 /* 250 */

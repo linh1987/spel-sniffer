@@ -1,26 +1,27 @@
 <div class="search-result">
   <a href="{{game.url}}" target="_blank">
-    <img src="{{game.image}}" />
+    <b class="game-name">{{game.name}}</b>
+    <br />
     <br />
 
+    <section class="search-result-inner">
+      <img src="{{game.image}}" />
 
-    <span class="game-name">{{game.name}}</span>
-    <br />
-    <br />
-    <div *ngIf="1 == 2; else singlePriceTemplate">
-      <span class="game-name">Lowest Price: {{game.lowestPrice}} kr</span>
+      <div *ngIf="game.highestPrice > game.lowestPrice; else singlePriceTemplate">
+        <span class="game-name">Lowest Price: {{game.lowestPrice}} kr</span>
+        <br />
+        <br />
+        <span class="game-name {{game.currentPrice < game.highestPrice ? 'game-hasdiscount' : ''}}">Highest Price: {{game.highestPrice}} kr</span>
+      </div>
+      <ng-template #singlePriceTemplate>
+        <span class="game-name {{game.currentPrice < game.highestPrice ? 'game-hasdiscount' : ''}}">Price: {{game.highestPrice}} kr</span>
+      </ng-template>
+      
       <br />
       <br />
-      <span class="game-name {{game.currentPrice < game.highestPrice ? 'game-hasdiscount' : ''}}">Highest Price: {{game.highestPrice}} kr</span>
-    </div>
-    <ng-template #singlePriceTemplate>
-      <span class="game-name {{game.currentPrice < game.highestPrice ? 'game-hasdiscount' : ''}}">Price: {{game.highestPrice}} kr</span>
-    </ng-template>
-    
-    <br />
-    <br />
-    <label class="stock">In stock:
-      <i class="symbol icon-{{game.available ? 'tick' : 'error'}}"></i>
-    </label>
+      <label class="stock">In stock:
+        <i class="symbol icon-{{game.available ? 'tick' : 'error'}}"></i>
+      </label>
+    </section>
   </a>
 </div>
