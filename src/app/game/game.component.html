@@ -1,25 +1,25 @@
 <div class="search-result">
   <a href="{{game.url}}" target="_blank">
-    <img src="{{game.image}}" />
-    <br />
-
-
-    <span class="game-name">{{game.name}}</span>
-    <br />
-    <br />
-    <span class="game-name {{game.currentPrice < game.highestPrice && game.available ? 'game-highlight' : ''}}">Price: {{game.currentPrice}} kr</span>
-    <br />
-    <br />
-    <span class="game-name">Lowest Price: {{game.lowestPrice}} kr</span>
-    <br />
-    <br />
-    <span class="game-name {{game.currentPrice < game.highestPrice && game.available ? 'game-hasdiscount' : ''}}">Highest Price: {{game.highestPrice}} kr</span>
-    <br />
-    <br />
-    <label class="stock">In stock:
-      <i class="symbol icon-{{game.available ? 'tick' : 'error'}}"></i>
-      <span>{{game.available}}</span>
-    </label>
-
+    <h2 class="game-name">{{game.name}}</h2>
+    <section>
+      <div class="game-left">
+        <img src="{{game.image}}" />
+      </div>
+      <div class="game-right">
+        <div *ngIf="game.highestPrice > game.lowestPrice; else singlePriceTemplate">
+          <span>Lowest Price: {{game.lowestPrice}} kr</span>
+          <br>
+          <span class="{{game.currentPrice < game.highestPrice && game.available ? 'game-hasdiscount' : ''}}">Highest Price: {{game.highestPrice}} kr</span>
+        </div>
+        <ng-template #singlePriceTemplate>
+          <span class="{{game.currentPrice < game.highestPrice && game.available  ? 'game-hasdiscount' : ''}}">Price: {{game.highestPrice}} kr</span>
+        </ng-template>
+        <br />
+        <br />
+        <label class="stock">In stock:
+          <i class="symbol icon-{{game.available ? 'tick' : 'error'}}"></i>
+        </label>
+      </div>
+    </section>
   </a>
 </div>
