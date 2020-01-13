@@ -9,11 +9,11 @@ const parseHtmlToProducts = (response) => {
     const foundProducts = $('#block-system-main .view-content .views-row').map((_, el) => {
         const $el = $(el);
         const game = {
-            url: domainPrefix + $el.find('.field-image a').first().attr('href'),
-            name: $el.find('.content h2').first().text().trim(),
-            image: $el.find('.field-image img').first().attr('src'),
-            price: $el.find('.cart a').first().text().trim(),
-            available: $el.find('.cart a').text().indexOf('kr') > -1
+            url: domainPrefix + $el.find('.image a').first().attr('href'),
+            name: $el.find('.node h2').first().text().trim(),
+            image: $el.find('.image img').first().attr('src'),
+            price: $el.find('.price').first().text().trim(),
+            available: $el.find('.cart a').length > 0
         }
 
         return game;
