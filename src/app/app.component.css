@@ -4,6 +4,10 @@ html, body{
   color: #171b23
 }
 
+body {
+  background-color: #eeeced;
+}
+
 a.active {
   background-color: gray;
 }
@@ -38,11 +42,13 @@ a {
 .search-result {
   float: left;
   width: 95%;
-  margin: 10px;
-  background: #eeeced;
-  border: solid 3px #eeeced;
-  border-radius: 15px;
   height: 230px;
+  margin: 10px;
+  color: #555;
+  background: white;
+  border: solid 1px #ddd;
+  box-shadow: 0px 0px 5px rgba(50,50,50,0.5);
+  border-radius: 15px;
 }
 
 .search-result a {
@@ -64,6 +70,7 @@ a {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  object-position: top;
 }
 
 .game-left {
