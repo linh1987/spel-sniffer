@@ -7,7 +7,7 @@ const domainPrefix = 'https://www.dragonslair.se';
 
 const parseHtmlToProducts = (response) => {
     const $ = cheerio.load(response);
-    const foundProducts = $('.grid-item').map((_, el) => {
+    const foundProducts = $('.grid .item').map((_, el) => {
         const $el = $(el);
         const game = {
             url: domainPrefix + $el.find('a').first().attr('href'),
