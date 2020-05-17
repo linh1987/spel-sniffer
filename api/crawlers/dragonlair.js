@@ -11,10 +11,10 @@ const parseHtmlToProducts = (response) => {
         const $el = $(el);
         const game = {
             url: domainPrefix + $el.find('a').first().attr('href'),
-            name: $el.find('.label').text().trim(),
-            image: domainPrefix + $el.find('img:not(.banner)').first().attr('src'),
+            name: $el.find('.title').text().trim(),
+            image: domainPrefix + $el.find('.image img').first().attr('src'),
             price: $el.find('.price').first().text().trim(),
-            available: $el.find('.controls').text().indexOf('Ja') > -1
+            available: $el.find('.stock .description').text().indexOf('Ja') > -1
         }
 
         return game;

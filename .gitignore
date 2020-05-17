@@ -58,6 +58,8 @@ npm-debug.log
 dll/
 dist/*.hot-update.js*
 
+dist
+
 # Doc #
 /doc/
 /documentation/
